@@ -11,17 +11,22 @@ const styles = {
 }
 
 function TodoList(props) {
+
     return(
         <ul style={styles.ul}>
             { props.todos.map((todo, index) => {
-                return <TodoItem todo={todo} key={todo.id} index={index}/>
+                return <TodoItem todo={todo}
+                                 key={todo.id}
+                                 index={index}
+                                 onChange={props.onTogle}/>
             }) }
         </ul>
     )
 }
 
 TodoList.propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired
+    todos: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onTogle: PropTypes.func.isRequired
 }
 
 export default TodoList;
